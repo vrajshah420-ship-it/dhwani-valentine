@@ -164,18 +164,21 @@
       noBtn.style.top = top + "px";
     }
 
-    // Desktop support
-zone.addEventListener("mousemove", () => moveNo());
+// Desktop: NO runs away on hover
+noBtn.addEventListener("mouseenter", moveNo);
 
-// iPhone / touch support
-zone.addEventListener("touchstart", () => moveNo());
-zone.addEventListener("touchmove", () => moveNo());
+// Mobile: NO runs away instantly on touch
+noBtn.addEventListener("touchstart", e => {
+  e.preventDefault();
+  moveNo();
+});
 
-// Prevent NO button from being clicked
+// Extra safety: block clicking
 noBtn.addEventListener("click", e => {
   e.preventDefault();
   moveNo();
 });
+
 
 
     yesBtn.addEventListener("click", () => {
