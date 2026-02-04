@@ -115,10 +115,10 @@
       <button id="noBtn">No</button>
     </section>
 
-    <div class="hint" id="hint">“No” seems a bit shy 😈</div>
+    <div class="hint" id="hint">“No” to tu nai j dabaaveee 😈</div>
 
     <section class="result" id="result">
-      <h2>YAY! 🎉<br>,i knew it bachhudi 😘 you just made my day 💕</h2>
+      <h2>YAY! 🎉<br>i knew it bachhudiiii 😘 you just made my day 💕</h2>
     </section>
   </main>
 
@@ -164,8 +164,19 @@
       noBtn.style.top = top + "px";
     }
 
-    zone.addEventListener("pointermove", e => moveNo(e.clientX, e.clientY));
-    noBtn.addEventListener("click", e => e.preventDefault());
+    // Desktop support
+zone.addEventListener("mousemove", () => moveNo());
+
+// iPhone / touch support
+zone.addEventListener("touchstart", () => moveNo());
+zone.addEventListener("touchmove", () => moveNo());
+
+// Prevent NO button from being clicked
+noBtn.addEventListener("click", e => {
+  e.preventDefault();
+  moveNo();
+});
+
 
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
